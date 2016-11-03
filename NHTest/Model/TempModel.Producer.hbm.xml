@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="NHTest" namespace="NHTest.Model" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Producer" table="Producers">
+    <id name="Id" type="Int64">
+      <column name="Id" not-null="true" />
+      <generator class="identity" />
+    </id>
+    <property name="Name" type="String">
+      <column name="Name" not-null="true" />
+    </property>
+    <set name="ProductLinkProducers" inverse="true" generic="true">
+      <key>
+        <column name="ProducerId" />
+      </key>
+      <one-to-many class="ProductLinkProducer" />
+    </set>
+  </class>
+</hibernate-mapping>

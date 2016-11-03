@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="NHTest" namespace="NHTest.Model" p1:Guid="6662476e-6690-4963-9ce8-7c6479a64cfd" p1:EntityBase="BaseEntity" xmlns:p1="http://devart.com/schemas/EntityDeveloper/1.0" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="Product" table="" p1:Guid="cfddc121-f5bd-424b-8b00-f7d7a2f5755d">
+    <id name="Id" type="Int64" p1:ValidateRequired="True" p1:Guid="eac0c19e-3b22-47ac-99dc-6d0ad6ba91b4">
+      <column name="Id" />
+      <generator class="identity" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="True" p1:Guid="84edd614-aba0-46de-a346-fc84e54d7cf4">
+      <column name="Name" />
+    </property>
+    <set name="ProductLinkProducers" inverse="true" generic="true" p1:AssociationGuid="d6d47839-8db0-42d8-a910-ca1cd8d341c8" p1:Guid="23670fd0-96aa-4e28-b814-97959a2dcd49">
+      <key>
+        <column name="ProductId" />
+      </key>
+      <one-to-many class="ProductLinkProducer" />
+    </set>
+  </class>
+  <class name="Producer" table="" p1:Guid="de711fba-da06-4ecd-b2bc-727196c1bd26">
+    <id name="Id" type="Int64" p1:ValidateRequired="True" p1:Guid="80246f5a-610a-4337-9af2-79aeeffc9dff">
+      <column name="" />
+      <generator class="identity" />
+    </id>
+    <property name="Name" type="String" p1:ValidateRequired="True" p1:Guid="e854b17c-c89f-4be9-b7e1-ecc546b41636">
+      <column name="" />
+    </property>
+    <set name="ProductLinkProducers" inverse="true" generic="true" p1:AssociationGuid="ba69deda-b78a-4b8f-b66e-2ff16ce2a083" p1:Guid="cd936366-7563-43aa-b3b2-bd1b520e968f">
+      <key>
+        <column name="ProducerId" />
+      </key>
+      <one-to-many class="ProductLinkProducer" />
+    </set>
+  </class>
+  <class name="ProductLinkProducer" table="" p1:Guid="af5dad30-b68f-4be8-8bda-00569ebf7864">
+    <id name="LinkId" type="Int64" p1:ValidateRequired="True" p1:Guid="5a9a60f2-5b13-44d1-817b-a05b36f01b7b">
+      <column name="" />
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Product" class="Product" p1:AssociationGuid="d6d47839-8db0-42d8-a910-ca1cd8d341c8" p1:Guid="9f36c984-b297-4421-9aea-c854926dc962">
+      <column name="ProductId" />
+    </many-to-one>
+    <many-to-one name="Producer" class="Producer" p1:AssociationGuid="ba69deda-b78a-4b8f-b66e-2ff16ce2a083" p1:Guid="413c2420-14a3-4f00-92f8-ebdf4cbb6bf4">
+      <column name="ProducerId" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>

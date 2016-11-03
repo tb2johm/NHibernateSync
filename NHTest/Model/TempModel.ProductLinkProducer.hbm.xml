@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping assembly="NHTest" namespace="NHTest.Model" xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ProductLinkProducer" table="ProductLinkProducers">
+    <id name="LinkId" type="Int64">
+      <column name="LinkId" not-null="true" />
+      <generator class="identity" />
+    </id>
+    <many-to-one name="Product" class="Product">
+      <column name="ProductId" not-null="true" />
+    </many-to-one>
+    <many-to-one name="Producer" class="Producer">
+      <column name="ProducerId" not-null="true" />
+    </many-to-one>
+  </class>
+</hibernate-mapping>
